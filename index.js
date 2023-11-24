@@ -16,8 +16,11 @@ app.get("/UploadForm.html", (req, res) => {
 });
 
 app.get("/notes", (req, res) => {
-  res.sendFile(path.join(__dirname, "notes.json"));
-});
+  if (!fs.existsSync("notes.json")){
+      fs.writeFileSync("notes.json", "[]");
+  }
+  res.sendFile("notes.json", {root: __dirname});
+})
 
 app.get("/notes/:noteTitle", (req, res) => {
   const notes = JSON.parse(fs.readFileSync(path.join(__dirname, "notes.json")));
