@@ -44,7 +44,7 @@ app.post("/upload", (req, res) => {
   notes.push(newNote);
   dataToWrite = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataToWrite);
-  res.sendStatus(200);
+  res.sendStatus(201);
 });
 
 app.put("/notes/:noteTitle", (req, res)=>{
