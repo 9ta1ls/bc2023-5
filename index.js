@@ -40,7 +40,7 @@ app.post("/upload", (req, res) => {
     res.sendStatus(400);
   }
   const Note = req.body.note;
-  const newNote = {"title": `${noteTitle}`, "note": `${Note}`};
+  const newNote = {"title": noteTitle, "note": Note};
   notes.push(newNote);
   dataToWrite = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataToWrite);
